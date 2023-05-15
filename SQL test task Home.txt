@@ -1,0 +1,45 @@
+1) SELECT * FROM Managers WHERE Phone IS NOT NULL
+
+2) SELECT * FROM Sells WHERE Date = 2021-05-20
+
+3) SELECT AVG(Sum) As AveragePrice FROM Sells INNER JOIN Products ON Sells.ID_Prod = Products.ID WHERE Products.Name = 'Фанера'
+
+4) SELECT
+	Managers.Fio,
+	SUM(Sells.Sum) AS AverageSum
+   FROM
+	Managers
+   INNER JOIN Sells ON Sells.ID_Manag = Managers.ID
+   INNER JOIN Products ON Sells.ID_Prod = Products.ID
+   WHERE
+	Products.Name = 'ОСБ'
+   GROUP BY Managers.Fio
+
+5) SELECT
+	Managers.Fio,
+	Products.Name
+   FROM
+	Managers
+   INNER JOIN Sells ON Sells.ID_Manag = Managers.ID
+   INNER JOIN Products ON Sells.ID_Prod = Products.ID
+   WHERE
+	Sells.Date = 2021-08-22
+
+6) Sellect * FROM Products WHERE Name = 'Фанера' AND Cost >= 1750
+
+7) SELLECT
+	Products.Name,
+	Sells.Count,
+	Sells.Sum
+   FROM
+	Products
+	INNER JOIN Products ON Sells.ID_Prod = Products.ID
+   GROUP BY MONTH(Sells.Date), Products.Name
+
+8) SELECT Name, Cost, COUNT(*) AS Count
+   FROM Products
+   GROUP BY Name
+   HAVING COUNT(*) > 1;
+
+
+   
